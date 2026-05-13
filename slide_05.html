@@ -3,50 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onboarding 05 – neubau.marketing</title>
+<title>Onboarding 05 – KPIs & Reporting</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-  html,body{width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff;}
-  .slide-wrap{position:fixed;inset:0;background:#2c313c;overflow:hidden;z-index:0;}
-  .bg{position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%);pointer-events:none;}
-  .bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
-  .slide{position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1;}
-  .header{display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0;}
-  .brand{font-size:clamp(14px,1.1vw,18px);font-weight:700;letter-spacing:0.07em;color:#ffffff;}
-  .brand span{color:#5b8ff1;}
-  .slide-num{font-size:clamp(12px,0.95vw,16px);letter-spacing:0.14em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-weight:700;}
-  .center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3vh;}
-  .wip-box{border-radius:20px;border:1px dashed rgba(91,143,241,0.35);background:rgba(91,143,241,0.05);padding:5vh 6vw;display:flex;flex-direction:column;align-items:center;gap:2vh;text-align:center;}
-  .wip-icon{font-size:clamp(32px,4vw,56px);opacity:0.5;}
-  .wip-label{font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#5b8ff1;}
-  .wip-title{font-size:clamp(24px,2.8vw,44px);font-weight:900;color:rgba(255,255,255,0.85);line-height:1.1;}
-  .wip-sub{font-size:clamp(13px,1.05vw,17px);font-weight:400;color:rgba(255,255,255,0.45);}
-  .footer{padding:0 4.5vw 2.5vh;display:flex;align-items:center;justify-content:space-between;position:relative;flex-shrink:0;}
-  .footer::before{content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15);}
-  .footer-text{font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh;}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff; }
+  .slide-wrap { position:fixed;inset:0;width:100vw;height:100vh;background:#2c313c;overflow:hidden;z-index:0; }
+  .bg { position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%),radial-gradient(ellipse 40vw 40vh at 50% 50%,rgba(91,143,241,0.04) 0%,transparent 70%);pointer-events:none; }
+  .bg::after { content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none; }
+  .slide { position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1; }
+  .header { display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0; }
+  .brand { font-size:clamp(14px,1.1vw,18px);font-weight:700;letter-spacing:0.07em;color:#ffffff; }
+  .brand span { color:#5b8ff1; }
+  .slide-num { font-size:clamp(12px,0.95vw,16px);letter-spacing:0.14em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-weight:700; }
+  .footer { padding:0 4.5vw 2.5vh;display:flex;align-items:center;justify-content:space-between;position:relative;flex-shrink:0; }
+  .footer::before { content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15); }
+  .footer-text { font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh; }
+
+  .slide-title { flex-shrink:0;padding:6vh 4.5vw 1.5vh; }
+  .eyebrow { display:flex;align-items:center;gap:1vw;font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#5b8ff1;margin-bottom:1.8vh; }
+  .eyebrow::before,.eyebrow::after { content:'';height:1px;width:2.5vw;background:rgba(91,143,241,0.5);flex-shrink:0; }
+  .headline { font-size:clamp(32px,4.5vw,72px);font-weight:900;line-height:1.05;color:#ffffff; }
+  .headline .hl { font-style:italic;background:linear-gradient(135deg,#5b8ff1 0%,#7aaaf5 50%,#3d5a9e 100%);-webkit-background-clip:text;background-clip:text;color:transparent; }
+
+  .body { flex:1;display:flex;flex-direction:column;padding:0 4.5vw 2vh;gap:1.8vh;min-height:0;justify-content:center; }
+
+  /* ── MAIN LAYOUT ── */
+  .main { display:flex;gap:1.5vw;flex-shrink:0; }
+
+  /* ── KPI CARDS ── */
+  .kpis { flex:1;display:grid;grid-template-columns:1fr 1fr;gap:1.1vh; }
+
+  .kpi-card {
+    border-radius:12px;border:1px solid rgba(255,255,255,0.07);
+    background:rgba(255,255,255,0.03);
+    padding:clamp(12px,1.3vh,18px) clamp(12px,1.2vw,18px);
+    display:flex;flex-direction:column;gap:0.5vh;
+    position:relative;overflow:hidden;
+  }
+  .kpi-card::after { content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(91,143,241,0.15),transparent); }
+  .kpi-card.primary { background:rgba(91,143,241,0.07);border-color:rgba(91,143,241,0.22); }
+  .kpi-card.primary::after { left:5%;right:5%;background:linear-gradient(90deg,transparent,rgba(91,143,241,0.4),transparent); }
+
+  .kpi-icon { font-size:clamp(18px,1.8vw,26px);margin-bottom:0.3vh; }
+  .kpi-name { font-size:clamp(13px,1.1vw,18px);font-weight:700;color:#ffffff;line-height:1.2; }
+  .kpi-desc { font-size:clamp(11px,0.88vw,15px);font-weight:400;color:rgba(255,255,255,0.62);line-height:1.45; }
+  .kpi-card.primary .kpi-desc { color:rgba(255,255,255,0.78); }
+
+  /* ── REPORTING CADENCE ── */
+  .cadence { width:28vw;flex-shrink:0;display:flex;flex-direction:column;gap:1.1vh; }
+
+  .cadence-label { font-size:clamp(11px,0.88vw,14px);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.3vh; }
+
+  .cadence-row {
+    border-radius:12px;border:1px solid rgba(255,255,255,0.07);
+    background:rgba(255,255,255,0.03);
+    padding:clamp(10px,1.1vh,16px) clamp(12px,1.2vw,18px);
+    display:flex;align-items:flex-start;gap:1vw;
+  }
+  .cadence-row.active { background:rgba(91,143,241,0.07);border-color:rgba(91,143,241,0.22); }
+  .cadence-freq {
+    font-size:clamp(10px,0.82vw,13px);font-weight:700;letter-spacing:0.1em;
+    text-transform:uppercase;padding:3px 10px;border-radius:20px;
+    white-space:nowrap;flex-shrink:0;margin-top:2px;width:8vw;text-align:center;
+  }
+  .cadence-row.active .cadence-freq { background:rgba(91,143,241,0.15);color:#5b8ff1;border:1px solid rgba(91,143,241,0.25); }
+  .cadence-row:not(.active) .cadence-freq { background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1); }
+  .cadence-info { flex:1;min-width:0; }
+  .cadence-title { font-size:clamp(12px,1vw,16px);font-weight:700;color:#ffffff;line-height:1.2; }
+  .cadence-sub { font-size:clamp(10px,0.82vw,13px);color:rgba(255,255,255,0.5);line-height:1.3;margin-top:0.2vh; }
+
+  /* ── NOTE ── */
+  .note-box {
+    flex-shrink:0;border-radius:12px;
+    background:rgba(52,199,89,0.06);border:1px solid rgba(52,199,89,0.2);
+    padding:clamp(10px,1.1vh,16px) clamp(16px,1.6vw,24px);
+    display:flex;align-items:center;gap:1.5vw;
+  }
+  .note-icon { font-size:clamp(16px,1.6vw,24px);flex-shrink:0; }
+  .note-text { font-size:clamp(12px,0.95vw,16px);color:rgba(255,255,255,0.82);line-height:1.5; }
+  .note-text strong { color:#34c759;font-weight:700; }
 </style>
 </head>
 <body>
 <div class="slide-wrap">
   <div class="bg"></div>
   <div class="slide">
+
     <div class="header">
       <div class="brand">neubau<span>.</span>marketing</div>
       <div class="slide-num">05 / 07</div>
     </div>
-    <div class="center">
-      <div class="wip-box">
-        <div class="wip-icon">&#9881;</div>
-        <div class="wip-label">Work in Progress</div>
-        <div class="wip-title">KPIs &amp; Reporting</div>
-        <div class="wip-sub">Wird gerade ausgearbeitet &mdash; in K&uuml;rze verf&uuml;gbar.</div>
-      </div>
+
+    <div class="slide-title">
+      <div class="eyebrow">KPIs &amp; Reporting</div>
+      <div class="headline">Was wir messen &mdash; <span class="hl">und wie du es siehst.</span></div>
     </div>
+
+    <div class="body">
+
+      <div class="main">
+
+        <!-- KPI GRID -->
+        <div class="kpis">
+
+          <div class="kpi-card primary">
+            <div class="kpi-icon">&#128202;</div>
+            <div class="kpi-name">Cost per Lead (CPL)</div>
+            <div class="kpi-desc">Was jede qualifizierte Anfrage kostet. Unser Richtwert aus Cases: 17&ndash;36&nbsp;&euro;.</div>
+          </div>
+
+          <div class="kpi-card primary">
+            <div class="kpi-icon">&#128200;</div>
+            <div class="kpi-name">Anzahl Anfragen</div>
+            <div class="kpi-desc">Gesamte Anfragen pro Woche &amp; kumuliert seit Kampagnenstart.</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon">&#127919;</div>
+            <div class="kpi-name">Konversionsrate</div>
+            <div class="kpi-desc">Anteil Anfragen die zu Besichtigungen oder Beurkundungen werden.</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon">&#128279;</div>
+            <div class="kpi-name">LP Conversion Rate</div>
+            <div class="kpi-desc">Besucher zu Anfrage. Unser Zielwert: &gt;6&nbsp;% (Marktdurchschnitt 2&ndash;4&nbsp;%).</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon">&#128176;</div>
+            <div class="kpi-name">Mediabudget-Effizienz</div>
+            <div class="kpi-desc">Wie viel Budget f&uuml;r wie viele Anfragen eingesetzt wurde.</div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon">&#128338;</div>
+            <div class="kpi-name">Reaktionszeit</div>
+            <div class="kpi-desc">Zeit zwischen Anfrage und erstem Kontakt durch dein Vertriebsteam.</div>
+          </div>
+
+        </div>
+
+        <!-- CADENCE -->
+        <div class="cadence">
+          <div class="cadence-label">Reporting-Rhythmus</div>
+
+          <div class="cadence-row active">
+            <div class="cadence-freq">W&ouml;chentlich</div>
+            <div class="cadence-info">
+              <div class="cadence-title">Meeting mit Daniel</div>
+              <div class="cadence-sub">KPIs, Kampagnen-Update, offene Fragen</div>
+            </div>
+          </div>
+
+          <div class="cadence-row active">
+            <div class="cadence-freq">Laufend</div>
+            <div class="cadence-info">
+              <div class="cadence-title">CRM-Dashboard</div>
+              <div class="cadence-sub">Alle Anfragen &amp; Pipeline jederzeit einsehbar</div>
+            </div>
+          </div>
+
+          <div class="cadence-row">
+            <div class="cadence-freq">Monatlich</div>
+            <div class="cadence-info">
+              <div class="cadence-title">Strategiegespräch</div>
+              <div class="cadence-sub">R&uuml;ckblick, Optimierungen, n&auml;chste Schritte</div>
+            </div>
+          </div>
+
+          <div class="cadence-row">
+            <div class="cadence-freq">Bei Bedarf</div>
+            <div class="cadence-info">
+              <div class="cadence-title">Direkt per WhatsApp</div>
+              <div class="cadence-sub">Daniel oder Olli &mdash; immer erreichbar</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- NOTE -->
+      <div class="note-box">
+        <div class="note-icon">&#128161;</div>
+        <div class="note-text">
+          <strong>Transparenz ist unser Standard.</strong> Du siehst zu jeder Zeit was l&auml;uft &mdash; kein Warten auf Monatsberichte, kein Raten. Wir empfehlen, die KPIs w&ouml;chentlich gemeinsam zu besprechen: so k&ouml;nnen wir schnell reagieren wenn etwas optimiert werden muss.
+        </div>
+      </div>
+
+    </div>
+
     <div class="footer">
       <div class="footer-text">Neobau Digital GmbH &middot; neubau.marketing</div>
       <div class="footer-text">Onboarding &middot; Vertraulich</div>
     </div>
+
   </div>
 </div>
 </body>
