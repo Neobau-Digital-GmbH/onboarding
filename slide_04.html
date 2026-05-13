@@ -3,50 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onboarding 04 – neubau.marketing</title>
+<title>Onboarding 04 – Neobau Solutions</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-  html,body{width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff;}
-  .slide-wrap{position:fixed;inset:0;background:#2c313c;overflow:hidden;z-index:0;}
-  .bg{position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%);pointer-events:none;}
-  .bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
-  .slide{position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1;}
-  .header{display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0;}
-  .brand{font-size:clamp(14px,1.1vw,18px);font-weight:700;letter-spacing:0.07em;color:#ffffff;}
-  .brand span{color:#5b8ff1;}
-  .slide-num{font-size:clamp(12px,0.95vw,16px);letter-spacing:0.14em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-weight:700;}
-  .center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3vh;}
-  .wip-box{border-radius:20px;border:1px dashed rgba(91,143,241,0.35);background:rgba(91,143,241,0.05);padding:5vh 6vw;display:flex;flex-direction:column;align-items:center;gap:2vh;text-align:center;}
-  .wip-icon{font-size:clamp(32px,4vw,56px);opacity:0.5;}
-  .wip-label{font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#5b8ff1;}
-  .wip-title{font-size:clamp(24px,2.8vw,44px);font-weight:900;color:rgba(255,255,255,0.85);line-height:1.1;}
-  .wip-sub{font-size:clamp(13px,1.05vw,17px);font-weight:400;color:rgba(255,255,255,0.45);}
-  .footer{padding:0 4.5vw 2.5vh;display:flex;align-items:center;justify-content:space-between;position:relative;flex-shrink:0;}
-  .footer::before{content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15);}
-  .footer-text{font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh;}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff; }
+  .slide-wrap { position:fixed;inset:0;width:100vw;height:100vh;background:#2c313c;overflow:hidden;z-index:0; }
+  .bg { position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%),radial-gradient(ellipse 40vw 40vh at 50% 50%,rgba(91,143,241,0.04) 0%,transparent 70%);pointer-events:none; }
+  .bg::after { content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none; }
+  .slide { position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1; }
+  .header { display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0; }
+  .brand { font-size:clamp(14px,1.1vw,18px);font-weight:700;letter-spacing:0.07em;color:#ffffff; }
+  .brand span { color:#5b8ff1; }
+  .slide-num { font-size:clamp(12px,0.95vw,16px);letter-spacing:0.14em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-weight:700; }
+  .footer { padding:0 4.5vw 2.5vh;display:flex;align-items:center;justify-content:space-between;position:relative;flex-shrink:0; }
+  .footer::before { content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15); }
+  .footer-text { font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh; }
+
+  /* ── FIXED TITLE ── */
+  .slide-title { flex-shrink:0;padding:6vh 4.5vw 1.5vh; }
+  .eyebrow { display:flex;align-items:center;gap:1vw;font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#5b8ff1;margin-bottom:1.8vh; }
+  .eyebrow::before,.eyebrow::after { content:'';height:1px;width:2.5vw;background:rgba(91,143,241,0.5);flex-shrink:0; }
+  .headline { font-size:clamp(32px,4.5vw,72px);font-weight:900;line-height:1.05;color:#ffffff; }
+  .headline .hl { font-style:italic;background:linear-gradient(135deg,#5b8ff1 0%,#7aaaf5 50%,#3d5a9e 100%);-webkit-background-clip:text;background-clip:text;color:transparent; }
+
+  /* ── BODY ── */
+  .body { flex:1;display:flex;flex-direction:column;padding:0 4.5vw 2vh;gap:1.8vh;min-height:0;justify-content:center; }
+
+  /* ── COMPARISON ── */
+  .comparison { display:flex;gap:1.5vw;flex-shrink:0; }
+
+  /* Basic Card */
+  .tier-card {
+    flex:1;border-radius:16px;
+    padding:clamp(16px,1.8vh,24px) clamp(16px,1.6vw,24px);
+    display:flex;flex-direction:column;gap:1.4vh;
+    position:relative;overflow:hidden;
+  }
+
+  .tier-card.basic {
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.09);
+  }
+  .tier-card.basic::after { content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent); }
+
+  .tier-card.plus {
+    background:linear-gradient(160deg,#1f2535 0%,#252d40 100%);
+    border:1px solid rgba(91,143,241,0.3);
+    box-shadow:0 0 60px rgba(91,143,241,0.10),inset 0 0 40px rgba(91,143,241,0.04);
+  }
+  .tier-card.plus::before { content:'';position:absolute;top:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(91,143,241,0.6),transparent); }
+  .tier-card.plus::after { content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:280px;height:280px;background:radial-gradient(circle,rgba(91,143,241,0.10) 0%,transparent 70%);pointer-events:none; }
+
+  /* Tier Header */
+  .tier-header { display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:relative;z-index:1; }
+  .tier-name { font-size:clamp(20px,2.2vw,34px);font-weight:900;color:#ffffff; }
+  .tier-badge {
+    font-size:clamp(10px,0.82vw,13px);font-weight:700;letter-spacing:0.1em;
+    text-transform:uppercase;padding:4px 12px;border-radius:20px;
+  }
+  .tier-badge.included { background:rgba(52,199,89,0.12);color:#34c759;border:1px solid rgba(52,199,89,0.25); }
+  .tier-badge.upsell { background:rgba(91,143,241,0.15);color:#5b8ff1;border:1px solid rgba(91,143,241,0.3); }
+
+  .tier-sub { font-size:clamp(12px,0.95vw,16px);font-weight:400;color:rgba(255,255,255,0.6);line-height:1.4;position:relative;z-index:1; }
+
+  /* Feature list */
+  .feature-list { display:flex;flex-direction:column;gap:0.7vh;position:relative;z-index:1; }
+  .feature { display:flex;align-items:flex-start;gap:0.7vw;font-size:clamp(12px,0.95vw,16px);color:rgba(255,255,255,0.82);line-height:1.4; }
+  .feature-check { flex-shrink:0;font-size:clamp(11px,0.88vw,14px);margin-top:1px; }
+  .tier-card.basic .feature-check { color:rgba(255,255,255,0.4); }
+  .tier-card.plus .feature-check { color:#5b8ff1; }
+  .feature-note { font-size:clamp(10px,0.82vw,13px);color:rgba(255,255,255,0.4);font-style:italic;margin-top:0.4vh; }
+
+  /* Divider in feature list */
+  .feature-divider { height:1px;background:rgba(255,255,255,0.07);margin:0.5vh 0; }
+  .tier-card.plus .feature-divider { background:rgba(91,143,241,0.2); }
+
+  /* ── UPGRADE HINT ── */
+  .upgrade-hint {
+    flex-shrink:0;border-radius:12px;
+    background:rgba(91,143,241,0.07);border:1px solid rgba(91,143,241,0.2);
+    padding:clamp(10px,1.2vh,16px) clamp(16px,1.6vw,24px);
+    display:flex;align-items:center;gap:2vw;
+  }
+  .upgrade-hint::before { content:'';position:absolute; }
+  .hint-icon { font-size:clamp(18px,1.8vw,26px);flex-shrink:0; }
+  .hint-text { flex:1;font-size:clamp(12px,0.95vw,16px);color:rgba(255,255,255,0.80);line-height:1.5; }
+  .hint-text strong { color:#ffffff;font-weight:700; }
+  .hint-text em { font-style:normal;color:#5b8ff1;font-weight:700; }
+  .hint-cta { flex-shrink:0;font-size:clamp(12px,0.95vw,16px);font-weight:700;color:#5b8ff1;white-space:nowrap;padding:clamp(8px,1vh,13px) clamp(12px,1.2vw,18px);border-radius:10px;background:rgba(91,143,241,0.12);border:1px solid rgba(91,143,241,0.25);cursor:pointer; }
 </style>
 </head>
 <body>
 <div class="slide-wrap">
   <div class="bg"></div>
   <div class="slide">
+
     <div class="header">
       <div class="brand">neubau<span>.</span>marketing</div>
       <div class="slide-num">04 / 07</div>
     </div>
-    <div class="center">
-      <div class="wip-box">
-        <div class="wip-icon">&#9881;</div>
-        <div class="wip-label">Work in Progress</div>
-        <div class="wip-title">Neobau Solutions</div>
-        <div class="wip-sub">Wird gerade ausgearbeitet &mdash; in K&uuml;rze verf&uuml;gbar.</div>
-      </div>
+
+    <div class="slide-title">
+      <div class="eyebrow">Neobau Solutions CRM</div>
+      <div class="headline">Dein Vertrieb braucht <span class="hl">ein System.</span></div>
     </div>
+
+    <div class="body">
+
+      <div class="comparison">
+
+        <!-- BASIC -->
+        <div class="tier-card basic">
+          <div class="tier-header">
+            <div class="tier-name">Basic</div>
+            <div class="tier-badge included">&#10003;&nbsp; Im Kontingent enthalten</div>
+          </div>
+          <div class="tier-sub">L&auml;uft direkt mit dem Onboarding. Kein extra Setup n&ouml;tig.</div>
+          <div class="feature-list">
+            <div class="feature"><div class="feature-check">&#10003;</div>Kontakte &amp; Interessenten verwalten</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Abschl&uuml;sse &amp; Pipeline tracken</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Aufgaben &amp; Wiedervorlagen</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Anruf-Protokollierung</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>KPI-Dashboard (Basis)</div>
+            <div class="feature-divider"></div>
+            <div class="feature-note">Ersetzt Excel &amp; Notizzettel sofort. Kein Interessent geht mehr verloren.</div>
+          </div>
+        </div>
+
+        <!-- PLUS -->
+        <div class="tier-card plus">
+          <div class="tier-header">
+            <div class="tier-name">Plus</div>
+            <div class="tier-badge upsell">&#8594;&nbsp; Auf Anfrage</div>
+          </div>
+          <div class="tier-sub" style="color:rgba(255,255,255,0.75);">F&uuml;r Bautr&auml;ger die ihr gesamtes Vertriebssystem digitalisieren wollen.</div>
+          <div class="feature-list">
+            <div class="feature"><div class="feature-check">&#10003;</div>Alles aus Basic</div>
+            <div class="feature-divider"></div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Vollst&auml;ndige Einheiten- &amp; Stellplatzverwaltung</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Automatisierte Follow-up-Sequenzen</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Rollenrechte &amp; Teamverwaltung</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Dokumentenmanagement &amp; Vorlagen</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Lead-Import &amp; Datenbereinigung</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Erweiterte Dashboards &amp; Reporting</div>
+            <div class="feature"><div class="feature-check">&#10003;</div>Ganztages-Workshop vor Ort</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- UPGRADE HINT -->
+      <div class="upgrade-hint">
+        <div class="hint-icon">&#128161;</div>
+        <div class="hint-text">
+          <strong>Basic reicht f&uuml;r den Start vollkommen aus.</strong> Sobald du merkst, dass dein Vertrieb w&auml;chst und mehr Struktur braucht &mdash; <em>sprechen wir &uuml;ber Plus</em>. Kein Druck, kein Pitch. Du wei&szlig;t dann selbst, wann der Zeitpunkt ist.
+        </div>
+        <div class="hint-cta">Interesse? &rarr; Olli fragen</div>
+      </div>
+
+    </div>
+
     <div class="footer">
       <div class="footer-text">Neobau Digital GmbH &middot; neubau.marketing</div>
       <div class="footer-text">Onboarding &middot; Vertraulich</div>
     </div>
+
   </div>
 </div>
 </body>
