@@ -10,7 +10,7 @@
   *, *::before, *::after { margin:0;padding:0;box-sizing:border-box; }
   html, body { width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff; }
   .slide-wrap { position:fixed;inset:0;width:100vw;height:100vh;background:#2c313c;overflow:hidden;z-index:0; }
-  .bg { position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%),radial-gradient(ellipse 40vw 40vh at 50% 50%,rgba(91,143,241,0.04) 0%,transparent 70%);pointer-events:none; }
+  .bg { position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%);pointer-events:none; }
   .bg::after { content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none; }
   .slide { position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1; }
   .header { display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0; }
@@ -24,10 +24,21 @@
   .slide-title { flex-shrink:0;padding:6vh 4.5vw 1.5vh; }
   .eyebrow { display:flex;align-items:center;gap:1vw;font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#5b8ff1;margin-bottom:1.8vh; }
   .eyebrow::before,.eyebrow::after { content:'';height:1px;width:2.5vw;background:rgba(91,143,241,0.5);flex-shrink:0; }
-  .headline { font-size:clamp(28px,3.8vw,62px);font-weight:900;line-height:1.05;color:#ffffff; }
+  .headline { font-size:clamp(28px,3.8vw,62px);font-weight:900;line-height:1.05; }
   .headline .hl { font-style:italic;background:linear-gradient(135deg,#5b8ff1 0%,#7aaaf5 50%,#3d5a9e 100%);-webkit-background-clip:text;background-clip:text;color:transparent; }
 
   .body { flex:1;display:flex;flex-direction:column;padding:0 4.5vw 2vh;gap:1.5vh;min-height:0;justify-content:center; }
+
+  /* ── EQUAL ANFRAGEN NOTE ── */
+  .anfragen-note {
+    flex-shrink:0;border-radius:10px;
+    background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+    padding:clamp(7px,0.9vh,12px) clamp(14px,1.4vw,20px);
+    display:flex;align-items:center;gap:1vw;
+  }
+  .an-icon { font-size:clamp(14px,1.2vw,18px);flex-shrink:0; }
+  .an-text { font-size:clamp(11px,0.9vw,15px);color:rgba(255,255,255,0.62);line-height:1.4; }
+  .an-text strong { color:#ffffff;font-weight:700; }
 
   /* ── SCENARIO COLUMNS ── */
   .scenarios { display:flex;gap:1.2vw;flex-shrink:0; }
@@ -38,54 +49,52 @@
     display:flex;flex-direction:column;gap:1vh;
     position:relative;overflow:hidden;
   }
-  .scenario::after { content:'';position:absolute;top:0;left:8%;right:8%;height:1px; }
-  .scenario.best { background:rgba(52,199,89,0.07);border:1px solid rgba(52,199,89,0.2); }
-  .scenario.best::after { background:linear-gradient(90deg,transparent,rgba(52,199,89,0.4),transparent); }
-  .scenario.middle { background:rgba(91,143,241,0.10);border:1px solid rgba(91,143,241,0.35);box-shadow:0 0 40px rgba(91,143,241,0.08); }
-  .scenario.middle::after { background:linear-gradient(90deg,transparent,rgba(91,143,241,0.6),transparent); }
-  .scenario.worst { background:rgba(255,165,0,0.06);border:1px solid rgba(255,165,0,0.18); }
-  .scenario.worst::after { background:linear-gradient(90deg,transparent,rgba(255,165,0,0.35),transparent); }
+  .scenario.best  { background:rgba(52,199,89,0.07);border:1px solid rgba(52,199,89,0.22); }
+  .scenario.mid   { background:rgba(91,143,241,0.10);border:1px solid rgba(91,143,241,0.35);box-shadow:0 0 40px rgba(91,143,241,0.08); }
+  .scenario.worst { background:rgba(255,165,0,0.06);border:1px solid rgba(255,165,0,0.2); }
+
+  .scenario::after { content:'';position:absolute;top:0;left:5%;right:5%;height:1px; }
+  .scenario.best::after  { background:linear-gradient(90deg,transparent,rgba(52,199,89,0.5),transparent); }
+  .scenario.mid::after   { background:linear-gradient(90deg,transparent,rgba(91,143,241,0.6),transparent); }
+  .scenario.worst::after { background:linear-gradient(90deg,transparent,rgba(255,165,0,0.4),transparent); }
 
   /* Header */
-  .sc-top { display:flex;align-items:center;justify-content:space-between;gap:0.5vw; }
-  .sc-name { font-size:clamp(14px,1.3vw,20px);font-weight:900; }
-  .scenario.best .sc-name { color:#34c759; }
-  .scenario.middle .sc-name { color:#5b8ff1; }
-  .scenario.worst .sc-name { color:#ffb347; }
-  .sc-prob { font-size:clamp(9px,0.78vw,12px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px; }
-  .scenario.best .sc-prob { background:rgba(52,199,89,0.15);color:#34c759;border:1px solid rgba(52,199,89,0.3); }
-  .scenario.middle .sc-prob { background:rgba(91,143,241,0.2);color:#5b8ff1;border:1px solid rgba(91,143,241,0.4); }
-  .scenario.worst .sc-prob { background:rgba(255,165,0,0.12);color:#ffb347;border:1px solid rgba(255,165,0,0.25); }
+  .sc-head { display:flex;align-items:center;justify-content:space-between;flex-shrink:0; }
+  .sc-name { font-size:clamp(15px,1.4vw,22px);font-weight:900; }
+  .scenario.best  .sc-name  { color:#34c759; }
+  .scenario.mid   .sc-name  { color:#5b8ff1; }
+  .scenario.worst .sc-name  { color:#ffb347; }
+  .sc-badge { font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px; }
+  .scenario.best  .sc-badge { background:rgba(52,199,89,0.15);color:#34c759;border:1px solid rgba(52,199,89,0.3); }
+  .scenario.mid   .sc-badge { background:rgba(91,143,241,0.2);color:#5b8ff1;border:1px solid rgba(91,143,241,0.4); }
+  .scenario.worst .sc-badge { background:rgba(255,165,0,0.12);color:#ffb347;border:1px solid rgba(255,165,0,0.25); }
 
-  /* Stats row */
-  .sc-stats { display:flex;gap:0.8vw; }
-  .sc-stat { flex:1;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:clamp(6px,0.8vh,10px) clamp(8px,0.8vw,12px); }
-  .sc-stat-val { font-size:clamp(14px,1.4vw,22px);font-weight:900;line-height:1; }
-  .scenario.best .sc-stat-val { color:#34c759; }
-  .scenario.middle .sc-stat-val { background:linear-gradient(135deg,#5b8ff1,#7aaaf5);-webkit-background-clip:text;background-clip:text;color:transparent; }
-  .scenario.worst .sc-stat-val { color:#ffb347; }
-  .sc-stat-lbl { font-size:clamp(9px,0.72vw,11px);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.2vh; }
+  /* Key stats */
+  .sc-stats { display:flex;gap:0.7vw;flex-shrink:0; }
+  .sc-stat { flex:1;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:clamp(6px,0.8vh,11px) clamp(8px,0.8vw,12px); }
+  .sc-val { font-size:clamp(15px,1.5vw,24px);font-weight:900;line-height:1; }
+  .scenario.best  .sc-val { color:#34c759; }
+  .scenario.mid   .sc-val { background:linear-gradient(135deg,#5b8ff1,#7aaaf5);-webkit-background-clip:text;background-clip:text;color:transparent; }
+  .scenario.worst .sc-val { color:#ffb347; }
+  .sc-lbl { font-size:clamp(9px,0.72vw,11px);font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:0.2vh;line-height:1.2; }
+
+  /* Mini chart */
+  .sc-chart { flex-shrink:0;height:clamp(90px,11vh,130px);position:relative;margin-bottom:1.8vh; }
+  .sc-chart-label { font-size:clamp(9px,0.72vw,11px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.5vh; }
 
   /* Voraussetzungen */
-  .sc-pre-label { font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4); }
-  .sc-pre-list { display:flex;flex-direction:column;gap:0.4vh; }
-  .sc-pre-item { display:flex;align-items:flex-start;gap:0.5vw;font-size:clamp(11px,0.88vw,14px);color:rgba(255,255,255,0.75);line-height:1.35; }
+  .sc-pre { flex-shrink:0;display:flex;flex-direction:column;gap:0.35vh; }
+  .sc-pre-label { font-size:clamp(9px,0.72vw,11px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:0.1vh; }
+  .sc-pre-item { display:flex;align-items:flex-start;gap:0.5vw;font-size:clamp(11px,0.85vw,14px);color:rgba(255,255,255,0.72);line-height:1.3; }
   .sc-dot { width:4px;height:4px;border-radius:50%;flex-shrink:0;margin-top:5px; }
-  .scenario.best .sc-dot { background:#34c759; }
-  .scenario.middle .sc-dot { background:#5b8ff1; }
+  .scenario.best  .sc-dot { background:#34c759; }
+  .scenario.mid   .sc-dot { background:#5b8ff1; }
   .scenario.worst .sc-dot { background:#ffb347; }
 
-  /* Plan B (only worst) */
-  .planb { border-radius:8px;background:rgba(255,165,0,0.08);border:1px solid rgba(255,165,0,0.2);padding:clamp(6px,0.8vh,10px) clamp(8px,0.8vw,12px); }
-  .planb-label { font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#ffb347;margin-bottom:0.3vh; }
-  .planb-text { font-size:clamp(11px,0.88vw,14px);color:rgba(255,255,255,0.72);line-height:1.4; }
-
-  /* ── CHART ── */
-  .chart-row { display:flex;gap:1.5vw;flex-shrink:0; }
-  .chart-card { flex:1;border-radius:14px;border:1px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.03);padding:clamp(10px,1.2vh,16px) clamp(12px,1.2vw,18px);position:relative;overflow:hidden; }
-  .chart-card::after { content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(91,143,241,0.15),transparent); }
-  .chart-title { font-size:clamp(10px,0.82vw,13px);font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.8vh; }
-  .chart-wrap { height:clamp(80px,10vh,120px);position:relative; }
+  /* Plan B */
+  .planb { flex-shrink:0;border-radius:8px;background:rgba(255,165,0,0.08);border:1px solid rgba(255,165,0,0.2);padding:clamp(6px,0.8vh,10px) clamp(8px,0.8vw,12px); }
+  .planb-lbl { font-size:clamp(9px,0.72vw,11px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#ffb347;margin-bottom:0.2vh; }
+  .planb-txt { font-size:clamp(11px,0.85vw,14px);color:rgba(255,255,255,0.68);line-height:1.35; }
 
   /* ── COMMIT STRIP ── */
   .commit-strip {
@@ -98,7 +107,7 @@
   .cs-icon { font-size:clamp(18px,1.8vw,26px);flex-shrink:0; }
   .cs-text { flex:1;font-size:clamp(12px,0.95vw,16px);color:rgba(255,255,255,0.85);line-height:1.5; }
   .cs-text em { font-style:normal;color:#5b8ff1;font-weight:700; }
-  .cs-note { font-size:clamp(10px,0.82vw,13px);color:rgba(255,255,255,0.45);flex-shrink:0;font-style:italic; }
+  .cs-note { font-size:clamp(10px,0.8vw,13px);color:rgba(255,255,255,0.4);flex-shrink:0;font-style:italic;max-width:18vw;text-align:right;line-height:1.4; }
 </style>
 </head>
 <body>
@@ -113,109 +122,121 @@
 
     <div class="slide-title">
       <div class="eyebrow">3 Szenarien der Zusammenarbeit</div>
-      <div class="headline">Wo du landest, <span class="hl">entscheidest du.</span></div>
+      <div class="headline">Gleiche Anfragen. <span class="hl">Dein Vertrieb entscheidet.</span></div>
     </div>
 
     <div class="body">
+
+      <!-- ANFRAGEN NOTE -->
+      <div class="anfragen-note">
+        <div class="an-icon">&#128200;</div>
+        <div class="an-text">
+          <strong>Die Anzahl der Anfragen ist in allen Szenarien gleich</strong> &mdash; sie wird durch Objekt, Markt und unsere Kampagnenarbeit bestimmt, nicht durch dein Verhalten. <strong>Was du steuerst, ist was danach passiert.</strong>
+        </div>
+      </div>
 
       <!-- SCENARIOS -->
       <div class="scenarios">
 
         <!-- BEST CASE -->
         <div class="scenario best">
-          <div class="sc-top">
-            <div class="sc-name">Best Case</div>
-            <div class="sc-prob">20&nbsp;% Wahrscheinlichkeit</div>
+          <div class="sc-head">
+            <div class="sc-name">Volles Commitment</div>
+            <div class="sc-badge">20&nbsp;%</div>
           </div>
           <div class="sc-stats">
             <div class="sc-stat">
-              <div class="sc-stat-val">40&ndash;50</div>
-              <div class="sc-stat-lbl">Anfragen / Monat</div>
+              <div class="sc-val">4&ndash;5&nbsp;%</div>
+              <div class="sc-lbl">Konversionsrate</div>
             </div>
             <div class="sc-stat">
-              <div class="sc-stat-val">2&ndash;3</div>
-              <div class="sc-stat-lbl">Beurkundungen / 90 Tage</div>
+              <div class="sc-val">4&ndash;5</div>
+              <div class="sc-lbl">Beurkundungen / 90 Tage</div>
             </div>
           </div>
-          <div class="sc-pre-label">Voraussetzungen</div>
-          <div class="sc-pre-list">
-            <div class="sc-pre-item"><div class="sc-dot"></div>Unterlagen in 5 Werktagen geliefert</div>
-            <div class="sc-pre-item"><div class="sc-dot"></div>Vertrieb reagiert in &lt;&nbsp;1&nbsp;Std.</div>
-            <div class="sc-pre-item"><div class="sc-dot"></div>CRM konsequent gepflegt</div>
+          <div class="sc-chart">
+            <div class="sc-chart-label">Kum. Beurkundungen &mdash; 12 Wochen</div>
+            <canvas id="c_best" style="width:100%;height:calc(clamp(90px,11vh,130px) - 20px);"></canvas>
+          </div>
+          <div class="sc-pre">
+            <div class="sc-pre-label">Was du tust</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>R&uuml;ckruf in &lt;&nbsp;1&nbsp;Std.</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>Mindestens 6 Kontaktversuche pro Interessent</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>CRM konsequent gef&uuml;hrt</div>
             <div class="sc-pre-item"><div class="sc-dot"></div>Gespr&auml;chsempfehlungen umgesetzt</div>
           </div>
         </div>
 
         <!-- MIDDLE CASE -->
-        <div class="scenario middle">
-          <div class="sc-top">
+        <div class="scenario mid">
+          <div class="sc-head">
             <div class="sc-name">&#9733;&nbsp; Normalfall</div>
-            <div class="sc-prob">65&nbsp;% Wahrscheinlichkeit</div>
+            <div class="sc-badge">65&nbsp;%</div>
           </div>
           <div class="sc-stats">
             <div class="sc-stat">
-              <div class="sc-stat-val">25&ndash;40</div>
-              <div class="sc-stat-lbl">Anfragen / Monat</div>
+              <div class="sc-val">1&ndash;3&nbsp;%</div>
+              <div class="sc-lbl">Konversionsrate</div>
             </div>
             <div class="sc-stat">
-              <div class="sc-stat-val">1&ndash;2</div>
-              <div class="sc-stat-lbl">Beurkundungen / 90 Tage</div>
+              <div class="sc-val">1&ndash;3</div>
+              <div class="sc-lbl">Beurkundungen / 90 Tage</div>
             </div>
           </div>
-          <div class="sc-pre-label">Voraussetzungen</div>
-          <div class="sc-pre-list">
-            <div class="sc-pre-item"><div class="sc-dot"></div>Unterlagen in 10 Werktagen geliefert</div>
-            <div class="sc-pre-item"><div class="sc-dot"></div>Vertrieb reagiert in &lt;&nbsp;24&nbsp;Std.</div>
-            <div class="sc-pre-item"><div class="sc-dot"></div>CRM regelm&auml;&szlig;ig gepflegt</div>
-            <div class="sc-pre-item"><div class="sc-dot"></div>Markt normal, keine externen St&ouml;rer</div>
+          <div class="sc-chart">
+            <div class="sc-chart-label">Kum. Beurkundungen &mdash; 12 Wochen</div>
+            <canvas id="c_mid" style="width:100%;height:calc(clamp(90px,11vh,130px) - 20px);"></canvas>
+          </div>
+          <div class="sc-pre">
+            <div class="sc-pre-label">Was du tust</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>R&uuml;ckruf in &lt;&nbsp;24&nbsp;Std.</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>2&ndash;4 Kontaktversuche pro Interessent</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>CRM teilweise gef&uuml;hrt</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>Gespr&auml;chsf&uuml;hrung teilweise optimiert</div>
           </div>
         </div>
 
         <!-- WORST CASE -->
         <div class="scenario worst">
-          <div class="sc-top">
-            <div class="sc-name">Worst Case</div>
-            <div class="sc-prob">15&nbsp;% Wahrscheinlichkeit</div>
+          <div class="sc-head">
+            <div class="sc-name">Kein Commitment</div>
+            <div class="sc-badge">15&nbsp;%</div>
           </div>
           <div class="sc-stats">
             <div class="sc-stat">
-              <div class="sc-stat-val">5&ndash;25</div>
-              <div class="sc-stat-lbl">Anfragen / Monat</div>
+              <div class="sc-val">0&ndash;1&nbsp;%</div>
+              <div class="sc-lbl">Konversionsrate</div>
             </div>
             <div class="sc-stat">
-              <div class="sc-stat-val">0&ndash;1</div>
-              <div class="sc-stat-lbl">Beurkundungen / 90 Tage</div>
+              <div class="sc-val">0&ndash;1</div>
+              <div class="sc-lbl">Beurkundungen / 90 Tage</div>
             </div>
           </div>
-          <div class="sc-pre-label">Typische Ursachen</div>
-          <div class="sc-pre-list">
-            <div class="sc-pre-item"><div class="sc-dot"></div>Sp&auml;te Datenlieferung, Anfragen-Stau</div>
-            <div class="sc-pre-item"><div class="sc-dot"></div>Vertrieb reagiert zu langsam / gar nicht</div>
-            <div class="sc-pre-item"><div class="sc-dot"></div>Schwieriger Mikromarkt oder Zinseffekte</div>
+          <div class="sc-chart">
+            <div class="sc-chart-label">Kum. Beurkundungen &mdash; 12 Wochen</div>
+            <canvas id="c_worst" style="width:100%;height:calc(clamp(90px,11vh,130px) - 20px);"></canvas>
+          </div>
+          <div class="sc-pre">
+            <div class="sc-pre-label">Typische Ursachen</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>R&uuml;ckruf nach 24&nbsp;Std. oder gar nicht</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>Kein Nachfassen nach erstem Kontakt</div>
+            <div class="sc-pre-item"><div class="sc-dot"></div>CRM nicht genutzt</div>
           </div>
           <div class="planb">
-            <div class="planb-label">&#10003;&nbsp; Plan B greift automatisch</div>
-            <div class="planb-text">Persona-Reset + Kanalwechsel &mdash; innerhalb 14 Tagen steht ein neuer Ansatz.</div>
+            <div class="planb-lbl">&#10003;&nbsp; Plan B greift automatisch</div>
+            <div class="planb-txt">Wir sprechen offen an was nicht l&auml;uft &mdash; und erarbeiten gemeinsam einen Pivot.</div>
           </div>
         </div>
 
-      </div>
-
-      <!-- CHART -->
-      <div class="chart-row">
-        <div class="chart-card">
-          <div class="chart-title">Kumulierte Anfragen &mdash; 12 Wochen (Prognose)</div>
-          <div class="chart-wrap"><canvas id="c_szenarien"></canvas></div>
-        </div>
       </div>
 
       <!-- COMMIT STRIP -->
       <div class="commit-strip">
         <div class="cs-icon">&#9889;</div>
         <div class="cs-text">
-          Was den Unterschied zwischen diesen Szenarien ausmacht, liegt <em>nicht bei uns</em> &mdash; sondern bei dir. Wir liefern das System. <em>Dein Commitment bestimmt das Ergebnis.</em>
+          Die Anfragen kommen &mdash; das ist <em>unser Job</em>. Was daraus wird, liegt bei dir. <em>Dein Vertriebsprozess ist der einzige Hebel</em> der zwischen diesen drei Szenarien entscheidet.
         </div>
-        <div class="cs-note">Wahrscheinlichkeiten basieren auf Erfahrungswerten aus vergleichbaren Projekten.</div>
+        <div class="cs-note">Wahrscheinlichkeiten aus Erfahrungswerten vergleichbarer Projekte</div>
       </div>
 
     </div>
@@ -230,64 +251,56 @@
 
 <script>
 window.addEventListener('load', function() {
-  const grid = 'rgba(240,242,247,0.07)';
-  const muted = 'rgba(240,242,247,0.4)';
+  const grid  = 'rgba(240,242,247,0.07)';
+  const muted = 'rgba(240,242,247,0.35)';
+  const weeks = ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'];
 
-  // Kumulierte Wochendaten
-  const labels = ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'];
-  const best   = [5, 15, 27, 42, 57, 72, 87, 100, 112, 125, 135, 143];
-  const middle = [3,  8, 15, 25, 34, 44, 54,  64,  74,  84,  93, 100];
-  const worst  = [1,  3,  6, 10, 14, 18, 22,  26,  30,  34,  38,  42];
+  // Kumulierte Beurkundungen über 12 Wochen
+  // Basis: ~30 Anfragen/Monat (~7/Woche), Verzögerung durch Verkaufszyklus
+  const dataB = [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4];   // Best:  4-5% conv
+  const dataM = [0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2];   // Mid:   1-3% conv
+  const dataW = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1];   // Worst: 0-1% conv
 
-  new Chart(document.getElementById('c_szenarien'), {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'Best Case',
-          data: best,
-          borderColor: '#34c759',
-          backgroundColor: 'rgba(52,199,89,0.08)',
-          tension: 0.4, pointRadius: 3, pointBackgroundColor: '#34c759',
-          borderWidth: 2, fill: false
-        },
-        {
-          label: 'Normalfall',
-          data: middle,
-          borderColor: '#5b8ff1',
-          backgroundColor: 'rgba(91,143,241,0.08)',
-          tension: 0.4, pointRadius: 3, pointBackgroundColor: '#5b8ff1',
-          borderWidth: 2.5, fill: false
-        },
-        {
-          label: 'Worst Case',
-          data: worst,
-          borderColor: '#ffb347',
-          backgroundColor: 'rgba(255,179,71,0.06)',
-          tension: 0.4, pointRadius: 3, pointBackgroundColor: '#ffb347',
-          borderWidth: 2, fill: false,
-          borderDash: [5,4]
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: true,
-          position: 'top',
-          labels: { color: muted, font: { size: 10 }, boxWidth: 20, padding: 12 }
-        },
-        tooltip: { callbacks: { label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y + ' Anfragen (kum.)' } }
+  function makeChart(id, data, color) {
+    new Chart(document.getElementById(id), {
+      type: 'line',
+      data: {
+        labels: weeks,
+        datasets: [{
+          data,
+          borderColor: color,
+          backgroundColor: color.replace('1)', '0.12)').replace('rgb', 'rgba'),
+          tension: 0.35,
+          pointRadius: data.map((v,i) => (i > 0 && data[i] > data[i-1]) ? 5 : 2),
+          pointBackgroundColor: color,
+          pointBorderColor: '#2c313c',
+          pointBorderWidth: 1.5,
+          borderWidth: 2,
+          fill: true,
+          stepped: false
+        }]
       },
-      scales: {
-        x: { grid:{color:grid}, ticks:{color:muted, font:{size:9}, maxRotation:0} },
-        y: { grid:{color:grid}, ticks:{color:muted, font:{size:9}, callback: v => v+' Anf.'}, min:0 }
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend:{display:false}, tooltip:{
+          callbacks:{ label: ctx => ' '+ctx.parsed.y+' Beurkundungen (kum.)' }
+        }},
+        scales: {
+          x: { grid:{color:grid}, ticks:{color:muted, font:{size:8}, maxRotation:0} },
+          y: {
+            grid:{color:grid},
+            ticks:{color:muted, font:{size:8}, stepSize:1, callback: v => Number.isInteger(v) ? v : ''},
+            min: 0, max: 5
+          }
+        }
       }
-    }
-  });
+    });
+  }
+
+  makeChart('c_best',  dataB, 'rgb(52,199,89)');
+  makeChart('c_mid',   dataM, 'rgb(91,143,241)');
+  makeChart('c_worst', dataW, 'rgb(255,179,71)');
 });
 </script>
 </body>
