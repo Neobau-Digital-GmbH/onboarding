@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding 07 – Erste Schritte</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff; }
+  .slide-wrap { position:fixed;inset:0;width:100vw;height:100vh;background:#2c313c;overflow:hidden;z-index:0; }
+  .bg {
+    position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),
+      radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%),
+      radial-gradient(ellipse 40vw 40vh at 50% 50%,rgba(91,143,241,0.04) 0%,transparent 70%);
+    pointer-events:none;
+    animation:bgpulse 6s ease-in-out infinite;
+  }
+  @keyframes bgpulse { 0%,100%{opacity:1;} 50%{opacity:0.7;} }
+  .bg::after { content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none; }
+  .slide { position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1; }
+  .header { display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0; }
+  .brand { font-size:clamp(14px,1.1vw,18px);font-weight:700;letter-spacing:0.07em;color:#ffffff; }
+  .brand span { color:#5b8ff1; }
+  .slide-num { font-size:clamp(12px,0.95vw,16px);letter-spacing:0.14em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-weight:700; }
+  .footer { padding:0 4.5vw 2.5vh;display:flex;align-items:center;justify-content:space-between;position:relative;flex-shrink:0; }
+  .footer::before { content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15); }
+  .footer-text { font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh; }
+
+  .slide-title { flex-shrink:0;padding:6vh 4.5vw 1.5vh; }
+  .eyebrow { display:flex;align-items:center;gap:1vw;font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#5b8ff1;margin-bottom:1.8vh; }
+  .eyebrow::before,.eyebrow::after { content:'';height:1px;width:2.5vw;background:rgba(91,143,241,0.5);flex-shrink:0; }
+  .headline { font-size:clamp(32px,4.5vw,72px);font-weight:900;line-height:1.05;color:#ffffff; }
+  .headline .hl { font-style:italic;background:linear-gradient(135deg,#5b8ff1 0%,#7aaaf5 50%,#3d5a9e 100%);-webkit-background-clip:text;background-clip:text;color:transparent; }
+
+  .body { flex:1;display:flex;gap:2.5vw;padding:0 4.5vw 2vh;min-height:0;align-items:center; }
+
+  /* ── LEFT: To-Do Liste ── */
+  .left { flex:1;min-width:0;display:flex;flex-direction:column;gap:1vh; }
+
+  .todo-label { font-size:clamp(11px,0.88vw,14px);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.3vh; }
+
+  .todo-row {
+    display:flex;align-items:flex-start;gap:1vw;
+    border-radius:12px;
+    padding:clamp(10px,1.1vh,16px) clamp(12px,1.2vw,18px);
+    position:relative;overflow:hidden;
+  }
+  .todo-row.client { background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07); }
+  .todo-row.us { background:rgba(91,143,241,0.07);border:1px solid rgba(91,143,241,0.18); }
+  .todo-row.done { background:rgba(52,199,89,0.05);border:1px solid rgba(52,199,89,0.18); }
+
+  .todo-deadline {
+    font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.08em;
+    text-transform:uppercase;padding:3px 8px;border-radius:10px;
+    white-space:nowrap;flex-shrink:0;margin-top:2px;
+    width:6.5vw;text-align:center;
+  }
+  .todo-row.client .todo-deadline { background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1); }
+  .todo-row.us .todo-deadline { background:rgba(91,143,241,0.12);color:#5b8ff1;border:1px solid rgba(91,143,241,0.25); }
+  .todo-row.done .todo-deadline { background:rgba(52,199,89,0.12);color:#34c759;border:1px solid rgba(52,199,89,0.25); }
+
+  .todo-content { flex:1;min-width:0; }
+  .todo-title { font-size:clamp(12px,1vw,16px);font-weight:700;color:#ffffff;line-height:1.2; }
+  .todo-who { font-size:clamp(10px,0.82vw,13px);color:rgba(255,255,255,0.45);margin-top:0.2vh; }
+  .todo-row.us .todo-who { color:rgba(91,143,241,0.7); }
+  .todo-row.done .todo-who { color:rgba(52,199,89,0.7); }
+
+  .todo-check { font-size:clamp(14px,1.2vw,18px);flex-shrink:0;margin-top:2px; }
+  .todo-row.client .todo-check { color:rgba(255,255,255,0.25); }
+  .todo-row.us .todo-check { color:#5b8ff1; }
+  .todo-row.done .todo-check { color:#34c759; }
+
+  /* ── RIGHT: Closing + Contacts ── */
+  .right { width:28vw;flex-shrink:0;display:flex;flex-direction:column;gap:1.4vh; }
+
+  .closing-box {
+    border-radius:16px;
+    background:linear-gradient(145deg,rgba(91,143,241,0.12) 0%,rgba(91,143,241,0.04) 100%);
+    border:1px solid rgba(91,143,241,0.28);
+    box-shadow:0 0 60px rgba(91,143,241,0.10),inset 0 0 40px rgba(91,143,241,0.04);
+    padding:clamp(16px,1.8vh,26px) clamp(16px,1.6vw,24px);
+    display:flex;flex-direction:column;gap:1.4vh;
+    position:relative;overflow:hidden;
+  }
+  .closing-box::before { content:'';position:absolute;top:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(91,143,241,0.6),transparent); }
+
+  .closing-title { font-size:clamp(22px,2.4vw,38px);font-weight:900;line-height:1.1;background:linear-gradient(135deg,#5b8ff1,#7aaaf5);-webkit-background-clip:text;background-clip:text;color:transparent; }
+  .closing-text { font-size:clamp(13px,1.05vw,17px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.6; }
+  .closing-text em { font-style:normal;color:#ffffff;font-weight:700; }
+
+  .divider { height:1px;background:rgba(91,143,241,0.2); }
+
+  /* Contact buttons */
+  .contact-btns { display:flex;flex-direction:column;gap:0.8vh; }
+  .contact-btn {
+    display:flex;align-items:center;gap:0.8vw;
+    padding:clamp(8px,1vh,14px) clamp(12px,1.2vw,18px);
+    border-radius:10px;background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.09);
+    text-decoration:none;color:#ffffff;
+    font-size:clamp(12px,0.95vw,16px);font-weight:700;
+    transition:background 0.2s,border-color 0.2s;
+  }
+  .contact-btn:hover { background:rgba(91,143,241,0.12);border-color:rgba(91,143,241,0.3); }
+  .contact-btn-role { font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5b8ff1;display:block;margin-bottom:0.1vh; }
+  .contact-btn-name { color:#ffffff; }
+  .contact-btn-arrow { margin-left:auto;color:#5b8ff1;font-size:clamp(12px,1vw,16px); }
+</style>
+</head>
+<body>
+<div class="slide-wrap">
+  <div class="bg"></div>
+  <div class="slide">
+
+    <div class="header">
+      <div class="brand">neubau<span>.</span>marketing</div>
+      <div class="slide-num">08 / 08</div>
+    </div>
+
+    <div class="slide-title">
+      <div class="eyebrow">Erste Schritte</div>
+      <div class="headline">Was jetzt <span class="hl">konkret passiert.</span></div>
+    </div>
+
+    <div class="body">
+
+      <!-- LEFT: To-Dos -->
+      <div class="left">
+        <div class="todo-label">Deine To-Dos &mdash; mit Deadlines</div>
+
+        <div class="todo-row client" style="background:rgba(91,143,241,0.08);border-color:rgba(91,143,241,0.25);">
+          <div class="todo-deadline" style="background:rgba(91,143,241,0.15);color:#5b8ff1;border-color:rgba(91,143,241,0.3);">Jetzt</div>
+          <div class="todo-content">
+            <div class="todo-title">Best&auml;tige uns per WhatsApp</div>
+            <div class="todo-who" style="color:#5b8ff1;">&#9889; Direkt nach diesem Onboarding &mdash; dein erstes Signal dass du dabei bist</div>
+          </div>
+          <div class="todo-check" style="color:#5b8ff1;">&#128172;</div>
+        </div>
+
+        <div class="todo-row client">
+          <div class="todo-deadline">Tag 1</div>
+          <div class="todo-content">
+            <div class="todo-title">Projektunterlagen bereitstellen</div>
+            <div class="todo-who">&#128100; Deine Aufgabe &mdash; Expos&eacute;, Grundrisse, Preisliste, Lageplan</div>
+          </div>
+          <div class="todo-check">&#9711;</div>
+        </div>
+
+        <div class="todo-row us">
+          <div class="todo-deadline">Tag 1</div>
+          <div class="todo-content">
+            <div class="todo-title">Kick-off Einladung versenden</div>
+            <div class="todo-who">&#8594; neubau.marketing &mdash; Daniel schickt dir die Kalendereinladung</div>
+          </div>
+          <div class="todo-check">&#10003;</div>
+        </div>
+
+        <div class="todo-row client">
+          <div class="todo-deadline">Tag 3</div>
+          <div class="todo-content">
+            <div class="todo-title">Bildmaterial &amp; Meta-Zugang</div>
+            <div class="todo-who">&#128100; Deine Aufgabe &mdash; Renderings, Fotos, Business Manager Admin-Zugang</div>
+          </div>
+          <div class="todo-check">&#9711;</div>
+        </div>
+
+        <div class="todo-row us">
+          <div class="todo-deadline">Tag 3&ndash;9</div>
+          <div class="todo-content">
+            <div class="todo-title">Landingpage, Creatives &amp; CRM einrichten</div>
+            <div class="todo-who">&#8594; neubau.marketing &mdash; wir liefern, du gibst Feedback</div>
+          </div>
+          <div class="todo-check">&#10003;</div>
+        </div>
+
+        <div class="todo-row client">
+          <div class="todo-deadline">Tag 10</div>
+          <div class="todo-content">
+            <div class="todo-title">Vertriebsteam f&uuml;r Onboarding verf&uuml;gbar machen</div>
+            <div class="todo-who">&#128100; Deine Aufgabe &mdash; ~1,5 Std. gemeinsames CRM- &amp; Vertriebscoaching</div>
+          </div>
+          <div class="todo-check">&#9711;</div>
+        </div>
+
+        <div class="todo-row done">
+          <div class="todo-deadline">&#8804; 2 Wo.</div>
+          <div class="todo-content">
+            <div class="todo-title">Go-Live &mdash; Erste Anfragen kommen rein</div>
+            <div class="todo-who">&#10003; Beide Seiten haben ihren Teil getan &mdash; das System l&auml;uft</div>
+          </div>
+          <div class="todo-check">&#128640;</div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Closing -->
+      <div class="right">
+
+        <div class="closing-box">
+          <div class="closing-title">Willkommen im System.</div>
+          <div class="closing-text">
+            Du hast alles was du brauchst. Wir haben alles was wir brauchen. <em>Jetzt bauen wir gemeinsam.</em>
+          </div>
+          <div class="divider"></div>
+          <div style="display:flex;align-items:flex-start;gap:0.8vw;padding:clamp(8px,1vh,13px);border-radius:10px;background:rgba(52,199,89,0.06);border:1px solid rgba(52,199,89,0.18);">
+            <div style="font-size:clamp(14px,1.3vw,20px);flex-shrink:0;">&#11088;</div>
+            <div>
+              <div style="font-size:clamp(10px,0.82vw,13px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#34c759;margin-bottom:0.3vh;">Nach dem ersten terminierten Videocall</div>
+              <div style="font-size:clamp(11px,0.9vw,15px);color:rgba(255,255,255,0.75);line-height:1.45;">Wir fragen dich nach einer <strong style="color:#ffffff;">Bewertung &amp; Empfehlung</strong> &mdash; nicht vorher, nicht routinem&auml;&szlig;ig. Nur wenn du selbst siehst dass es funktioniert.</div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div style="font-size:clamp(11px,0.88vw,14px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);">Deine direkten Kontakte</div>
+          <div class="contact-btns">
+            <a class="contact-btn" href="https://meeting.viewr.studio/#/MeetingMitDaniel" target="_blank">
+              <div>
+                <div class="contact-btn-role">Kampagne &amp; Strategie</div>
+                <div class="contact-btn-name">Daniel Mussack</div>
+              </div>
+              <div class="contact-btn-arrow">&#8594;</div>
+            </a>
+            <a class="contact-btn" href="https://meeting.viewr.studio/#/MeetingMitOlli" target="_blank">
+              <div>
+                <div class="contact-btn-role">Vertrieb &amp; Wachstum</div>
+                <div class="contact-btn-name">Oliver Hackenberg</div>
+              </div>
+              <div class="contact-btn-arrow">&#8594;</div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <div class="footer-text">Neobau Digital GmbH &middot; neubau.marketing</div>
+      <div class="footer-text">Onboarding &middot; Vertraulich</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
