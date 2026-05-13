@@ -60,14 +60,18 @@
   /* ── BOTTOM NOTE ── */
   .bottom-note {
     flex-shrink:0;border-radius:12px;
-    background:rgba(91,143,241,0.07);border:1px solid rgba(91,143,241,0.2);
+    background:rgba(255,165,0,0.07);border:1px solid rgba(255,165,0,0.2);
     padding:clamp(10px,1.2vh,16px) clamp(16px,1.6vw,24px);
-    display:flex;align-items:center;gap:1.5vw;
+    display:flex;gap:2vw;align-items:flex-start;
     margin-top:0.5vh;
   }
-  .note-icon { font-size:clamp(16px,1.6vw,24px);flex-shrink:0; }
+  .note-icon { font-size:clamp(16px,1.6vw,24px);flex-shrink:0;margin-top:2px; }
   .note-text { flex:1;font-size:clamp(12px,0.95vw,16px);color:rgba(255,255,255,0.82);line-height:1.5; }
   .note-text em { font-style:normal;color:#5b8ff1;font-weight:700; }
+  .fuckup-grid { display:flex;gap:1vw;flex:1; }
+  .fuckup-item { flex:1;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);padding:clamp(8px,1vh,13px) clamp(10px,1vw,15px);display:flex;flex-direction:column;gap:0.4vh; }
+  .fuckup-title { font-size:clamp(11px,0.9vw,15px);font-weight:700;color:#ffb347;line-height:1.2; }
+  .fuckup-desc { font-size:clamp(10px,0.82vw,13px);color:rgba(255,255,255,0.62);line-height:1.4; }
 </style>
 </head>
 <body>
@@ -77,7 +81,7 @@
 
     <div class="header">
       <div class="brand">neubau<span>.</span>marketing</div>
-      <div class="slide-num">06 / 07</div>
+      <div class="slide-num">06 / 08</div>
     </div>
 
     <div class="slide-title">
@@ -169,9 +173,25 @@
 
       <!-- BOTTOM NOTE -->
       <div class="bottom-note">
-        <div class="note-icon">&#128161;</div>
-        <div class="note-text">
-          Diese Empfehlungen kommen aus hunderten Gespr&auml;chen und mehreren Jahren Erfahrung in der Neubauvermarktung. Wir teilen sie, weil <em>dein Erfolg unser Erfolg ist</em> &mdash; und weil wir wissen was den Unterschied macht.
+        <div class="note-icon">&#9888;</div>
+        <div class="note-text" style="font-size:clamp(11px,0.88vw,14px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#ffb347;flex-shrink:0;white-space:nowrap;">Wenn es mal<br>nicht l&auml;uft</div>
+        <div class="fuckup-grid">
+          <div class="fuckup-item">
+            <div class="fuckup-title">&#128683; Werbekonto gesperrt</div>
+            <div class="fuckup-desc">Passiert. Wir l&ouml;sen das aktiv &mdash; du musst nichts tun. Reaktionszeit &lt;&nbsp;24&nbsp;Std.</div>
+          </div>
+          <div class="fuckup-item">
+            <div class="fuckup-title">&#128683; Performance-Delle Woche 1&ndash;2</div>
+            <div class="fuckup-desc">Normal &mdash; Algorithmus lernt noch. Wir melden uns proaktiv mit Update, bevor du fragst.</div>
+          </div>
+          <div class="fuckup-item">
+            <div class="fuckup-title">&#128683; Phishing-Mails</div>
+            <div class="fuckup-desc">Gef&auml;lschte Meta-Mails sind h&auml;ufig. Keine Links klicken, direkt an uns weiterleiten &mdash; wir pr&uuml;fen.</div>
+          </div>
+          <div class="fuckup-item">
+            <div class="fuckup-title">&#128683; Keine Konvertierungen nach 4 Wochen</div>
+            <div class="fuckup-desc">Diagnostischer Call, Persona-Reset, Pivot-Plan &mdash; innerhalb 14 Tagen steht ein neuer Ansatz.</div>
+          </div>
         </div>
       </div>
 
