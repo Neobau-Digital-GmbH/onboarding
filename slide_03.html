@@ -20,7 +20,8 @@
   .footer::before { content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15); }
   .footer-text { font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh; }
 
-  .body { flex:1;display:flex;flex-direction:column;padding:2vh 4.5vw 2vh;gap:2vh;min-height:0;justify-content:center; }
+  .slide-title { flex-shrink:0;padding:6vh 4.5vw 1.5vh; }
+  .body { flex:1;display:flex;flex-direction:column;padding:0 4.5vw 2vh;gap:2vh;min-height:0;justify-content:center; }
 
   .eyebrow { display:flex;align-items:center;gap:1vw;font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#5b8ff1;margin-bottom:1.8vh; }
   .eyebrow::before,.eyebrow::after { content:'';height:1px;width:2.5vw;background:rgba(91,143,241,0.5);flex-shrink:0; }
@@ -80,12 +81,12 @@
       <div class="brand">neubau<span>.</span>marketing</div>
       <div class="slide-num">03 / 07</div>
     </div>
-    <div class="body">
+    <div class="slide-title">
+      <div class="eyebrow">Was wir von dir brauchen</div>
+      <div class="headline">Damit wir <span class="hl">loslegen k&ouml;nnen.</span></div>
+    </div>
 
-      <div>
-        <div class="eyebrow">Was wir von dir brauchen</div>
-        <div class="headline">Damit wir <span class="hl">loslegen k&ouml;nnen.</span></div>
-      </div>
+    <div class="body">
 
       <div class="grid">
 
