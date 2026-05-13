@@ -3,28 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onboarding 03 – neubau.marketing</title>
+<title>Onboarding 03 – Was wir von dir brauchen</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-  html,body{width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff;}
-  .slide-wrap{position:fixed;inset:0;background:#2c313c;overflow:hidden;z-index:0;}
-  .bg{position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%);pointer-events:none;}
-  .bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
-  .slide{position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1;}
-  .header{display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0;}
-  .brand{font-size:clamp(14px,1.1vw,18px);font-weight:700;letter-spacing:0.07em;color:#ffffff;}
-  .brand span{color:#5b8ff1;}
-  .slide-num{font-size:clamp(12px,0.95vw,16px);letter-spacing:0.14em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-weight:700;}
-  .center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3vh;}
-  .wip-box{border-radius:20px;border:1px dashed rgba(91,143,241,0.35);background:rgba(91,143,241,0.05);padding:5vh 6vw;display:flex;flex-direction:column;align-items:center;gap:2vh;text-align:center;}
-  .wip-icon{font-size:clamp(32px,4vw,56px);opacity:0.5;}
-  .wip-label{font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#5b8ff1;}
-  .wip-title{font-size:clamp(24px,2.8vw,44px);font-weight:900;color:rgba(255,255,255,0.85);line-height:1.1;}
-  .wip-sub{font-size:clamp(13px,1.05vw,17px);font-weight:400;color:rgba(255,255,255,0.45);}
-  .footer{padding:0 4.5vw 2.5vh;display:flex;align-items:center;justify-content:space-between;position:relative;flex-shrink:0;}
-  .footer::before{content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15);}
-  .footer-text{font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh;}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff; }
+  .slide-wrap { position:fixed;inset:0;width:100vw;height:100vh;background:#2c313c;overflow:hidden;z-index:0; }
+  .bg { position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%),radial-gradient(ellipse 40vw 40vh at 50% 50%,rgba(91,143,241,0.04) 0%,transparent 70%);pointer-events:none; }
+  .bg::after { content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none; }
+  .slide { position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1; }
+  .header { display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0; }
+  .brand { font-size:clamp(14px,1.1vw,18px);font-weight:700;letter-spacing:0.07em;color:#ffffff; }
+  .brand span { color:#5b8ff1; }
+  .slide-num { font-size:clamp(12px,0.95vw,16px);letter-spacing:0.14em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-weight:700; }
+  .footer { padding:0 4.5vw 2.5vh;display:flex;align-items:center;justify-content:space-between;position:relative;flex-shrink:0; }
+  .footer::before { content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15); }
+  .footer-text { font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh; }
+
+  .body { flex:1;display:flex;flex-direction:column;padding:2vh 4.5vw 2vh;gap:2vh;min-height:0;justify-content:center; }
+
+  .eyebrow { display:flex;align-items:center;gap:1vw;font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#5b8ff1;margin-bottom:1.8vh; }
+  .eyebrow::before,.eyebrow::after { content:'';height:1px;width:2.5vw;background:rgba(91,143,241,0.5);flex-shrink:0; }
+  .headline { font-size:clamp(32px,4.5vw,72px);font-weight:900;line-height:1.05;color:#ffffff; }
+  .headline .hl { font-style:italic;background:linear-gradient(135deg,#5b8ff1 0%,#7aaaf5 50%,#3d5a9e 100%);-webkit-background-clip:text;background-clip:text;color:transparent; }
+
+  /* ── GRID ── */
+  .grid { display:flex;gap:1.5vw;flex-shrink:0; }
+
+  /* Asset Card */
+  .asset-card {
+    flex:1;border-radius:14px;
+    border:1px solid rgba(255,255,255,0.07);
+    background:rgba(255,255,255,0.03);
+    padding:clamp(14px,1.5vh,20px) clamp(14px,1.4vw,20px);
+    display:flex;flex-direction:column;gap:1.2vh;
+    position:relative;overflow:hidden;
+  }
+  .asset-card::after { content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(91,143,241,0.18),transparent); }
+  .asset-card.urgent { background:rgba(91,143,241,0.07);border-color:rgba(91,143,241,0.22); }
+  .asset-card.urgent::after { left:5%;right:5%;background:linear-gradient(90deg,transparent,rgba(91,143,241,0.4),transparent); }
+
+  .card-header { display:flex;align-items:center;gap:0.8vw; }
+  .card-icon { font-size:clamp(18px,1.8vw,26px);flex-shrink:0; }
+  .card-title-wrap { flex:1; }
+  .card-title { font-size:clamp(14px,1.2vw,19px);font-weight:700;color:#ffffff;line-height:1.2; }
+  .card-deadline { display:inline-flex;padding:2px 8px;border-radius:10px;font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.08em;background:rgba(91,143,241,0.12);color:#5b8ff1;border:1px solid rgba(91,143,241,0.2);margin-top:0.3vh;width:fit-content; }
+  .card-deadline.red { background:rgba(255,100,80,0.1);color:#ff6b6b;border-color:rgba(255,100,80,0.25); }
+  .card-deadline.green { background:rgba(52,199,89,0.1);color:#34c759;border-color:rgba(52,199,89,0.25); }
+
+  .item-list { display:flex;flex-direction:column;gap:0.6vh; }
+  .item { display:flex;align-items:flex-start;gap:0.6vw;font-size:clamp(12px,0.95vw,16px);color:rgba(255,255,255,0.82);line-height:1.4; }
+  .item-dot { width:5px;height:5px;border-radius:50%;background:#5b8ff1;flex-shrink:0;margin-top:5px; }
+  .item-dot.grey { background:rgba(255,255,255,0.35); }
+  .item-note { font-size:clamp(10px,0.82vw,13px);color:rgba(255,255,255,0.45);font-style:italic;margin-top:0.2vh; }
+
+  /* ── DELAY WARNING ── */
+  .delay-box {
+    flex-shrink:0;border-radius:12px;
+    background:rgba(255,165,0,0.07);border:1px solid rgba(255,165,0,0.2);
+    padding:clamp(10px,1.2vh,16px) clamp(16px,1.6vw,24px);
+    display:flex;align-items:center;gap:2vw;margin-top:2.5vh;
+  }
+  .delay-icon { font-size:clamp(18px,1.8vw,26px);flex-shrink:0; }
+  .delay-text { flex:1;font-size:clamp(12px,0.95vw,16px);color:rgba(255,255,255,0.82);line-height:1.5; }
+  .delay-text strong { color:#ffb347;font-weight:700; }
+  .delay-stat { flex-shrink:0;text-align:center;padding:0 1.5vw;border-left:1px solid rgba(255,165,0,0.2); }
+  .delay-val { font-size:clamp(16px,1.8vw,26px);font-weight:900;color:#ffb347; }
+  .delay-lbl { font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,165,0,0.6); }
 </style>
 </head>
 <body>
@@ -35,13 +80,102 @@
       <div class="brand">neubau<span>.</span>marketing</div>
       <div class="slide-num">03 / 07</div>
     </div>
-    <div class="center">
-      <div class="wip-box">
-        <div class="wip-icon">&#9881;</div>
-        <div class="wip-label">Work in Progress</div>
-        <div class="wip-title">Was wir von Ihnen brauchen</div>
-        <div class="wip-sub">Wird gerade ausgearbeitet &mdash; in K&uuml;rze verf&uuml;gbar.</div>
+    <div class="body">
+
+      <div>
+        <div class="eyebrow">Was wir von dir brauchen</div>
+        <div class="headline">Damit wir <span class="hl">loslegen k&ouml;nnen.</span></div>
       </div>
+
+      <div class="grid">
+
+        <!-- DOKUMENTE -->
+        <div class="asset-card urgent">
+          <div class="card-header">
+            <div class="card-icon">&#128196;</div>
+            <div class="card-title-wrap">
+              <div class="card-title">Projektunterlagen</div>
+              <div class="card-deadline red">Bis Tag 1 &mdash; Kick-off</div>
+            </div>
+          </div>
+          <div class="item-list">
+            <div class="item"><div class="item-dot"></div>Expos&eacute; oder Baubeschreibung</div>
+            <div class="item"><div class="item-dot"></div>Grundrisse aller Einheitentypen</div>
+            <div class="item"><div class="item-dot"></div>Preisliste (aktuell)</div>
+            <div class="item"><div class="item-dot"></div>Lageplan &amp; Umgebungsbeschreibung</div>
+            <div class="item-note">Je vollst&auml;ndiger, desto besser die Landingpage.</div>
+          </div>
+        </div>
+
+        <!-- BILDMATERIAL -->
+        <div class="asset-card urgent">
+          <div class="card-header">
+            <div class="card-icon">&#128247;</div>
+            <div class="card-title-wrap">
+              <div class="card-title">Bildmaterial</div>
+              <div class="card-deadline red">Bis Tag 3 &mdash; Setup-Start</div>
+            </div>
+          </div>
+          <div class="item-list">
+            <div class="item"><div class="item-dot"></div>Renderings &amp; Visualisierungen</div>
+            <div class="item"><div class="item-dot"></div>Fotos (Baustelle, Lage, Umgebung)</div>
+            <div class="item"><div class="item-dot"></div>Logo des Projekts oder Bautr&auml;gers</div>
+            <div class="item-note">Format: min. 1080px Breite, JPG oder PNG.</div>
+          </div>
+        </div>
+
+        <!-- ZUGÄNGE -->
+        <div class="asset-card">
+          <div class="card-header">
+            <div class="card-icon">&#128273;</div>
+            <div class="card-title-wrap">
+              <div class="card-title">Digitale Zug&auml;nge</div>
+              <div class="card-deadline">Bis Tag 3 &mdash; Setup-Start</div>
+            </div>
+          </div>
+          <div class="item-list">
+            <div class="item"><div class="item-dot grey"></div>Facebook Business Manager (Admin-Zugang)</div>
+            <div class="item"><div class="item-dot grey"></div>Bestehendes Werbekonto (falls vorhanden)</div>
+            <div class="item"><div class="item-dot grey"></div>E-Mail-Adresse f&uuml;r CRM-Einladung</div>
+            <div class="item-note">Wir erkl&auml;ren dir im Kick-off wie das geht.</div>
+          </div>
+        </div>
+
+        <!-- ANSPRECHPARTNER -->
+        <div class="asset-card">
+          <div class="card-header">
+            <div class="card-icon">&#128100;</div>
+            <div class="card-title-wrap">
+              <div class="card-title">Dein Vertriebsteam</div>
+              <div class="card-deadline green">Bis Tag 10 &mdash; Vertriebliches Onboarding</div>
+            </div>
+          </div>
+          <div class="item-list">
+            <div class="item"><div class="item-dot grey"></div>Hauptansprechpartner f&uuml;r Interessenten</div>
+            <div class="item"><div class="item-dot grey"></div>Wer bearbeitet Anfragen &mdash; und wann?</div>
+            <div class="item"><div class="item-dot grey"></div>R&uuml;ckrufzeiten &amp; Erreichbarkeit definieren</div>
+            <div class="item-note">1&ndash;1,5 Std. gemeinsames Onboarding ist Pflicht.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DELAY WARNING -->
+      <div class="delay-box">
+        <div class="delay-icon">&#9888;</div>
+        <div class="delay-text">
+          <strong>Fehlende Unterlagen verz&ouml;gern den Go-Live direkt.</strong> Jeder Tag ohne Kampagne ist ein Tag ohne Anfragen &mdash; und bei aktuellen Marktbedingungen z&auml;hlt jeder Tag. Wir sind schnell, sobald wir alles haben.
+        </div>
+        <div class="delay-stat">
+          <div class="delay-val">Tag 1</div>
+          <div class="delay-lbl">Unterlagen bereit</div>
+        </div>
+        <div class="delay-stat">
+          <div class="delay-val">Tag 14</div>
+          <div class="delay-lbl">Go-Live m&ouml;glich</div>
+        </div>
+      </div>
+
     </div>
     <div class="footer">
       <div class="footer-text">Neobau Digital GmbH &middot; neubau.marketing</div>
