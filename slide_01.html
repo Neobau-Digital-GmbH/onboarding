@@ -113,6 +113,15 @@
   }
   .team-member-wrap { display:flex;flex-direction:column;align-items:center;gap:0.4vh;width:clamp(60px,6vw,90px); }
 
+  .whatsapp-bar {
+    flex-shrink:0;border-radius:12px;
+    background:rgba(37,211,102,0.07);border:1px solid rgba(37,211,102,0.22);
+    padding:clamp(10px,1.1vh,16px) clamp(14px,1.4vw,20px);
+    display:flex;align-items:center;gap:1.5vw;margin-top:1.5vh;
+  }
+  .wa-icon { font-size:clamp(18px,1.8vw,26px);flex-shrink:0; }
+  .wa-text { flex:1;font-size:clamp(12px,0.95vw,16px);color:rgba(255,255,255,0.82);line-height:1.5; }
+  .wa-text strong { color:#25d366;font-weight:700; }
   .team-note { font-size:clamp(12px,0.95vw,15px);font-weight:400;color:rgba(255,255,255,0.5);font-style:italic; }
 </style>
 </head>
@@ -123,7 +132,7 @@
 
     <div class="header">
       <div class="brand">neubau<span>.</span>marketing</div>
-      <div class="slide-num">01 / 07</div>
+      <div class="slide-num">01 / 08</div>
     </div>
 
     <div class="slide-title">
@@ -148,6 +157,10 @@
 
           <div class="contact-details">
             <div class="detail-row">
+              <div class="detail-icon">&#127942;</div>
+              <div class="detail-text" style="color:rgba(255,255,255,0.6);font-style:italic;">CPL ab 17,30 &euro; &mdash; bei Projekten von Berlin bis Bayern</div>
+            </div>
+            <div class="detail-row">
               <div class="detail-icon">&#128231;</div>
               <div class="detail-text"><a href="mailto:daniel@neubau.marketing">daniel@neubau.marketing</a></div>
             </div>
@@ -157,7 +170,11 @@
             </div>
             <div class="detail-row">
               <div class="detail-icon">&#128172;</div>
-              <div class="detail-text">Fragen zu Kampagne, Landingpage, Creatives, Reporting</div>
+              <div class="detail-text">Kampagne, Landingpage, Creatives, Reporting</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-icon">&#9889;</div>
+              <div class="detail-text" style="color:rgba(91,143,241,0.85);font-weight:700;">Wir melden uns zuerst &mdash; du musst nicht hinterherfragen.</div>
             </div>
           </div>
 
@@ -178,6 +195,10 @@
 
           <div class="contact-details">
             <div class="detail-row">
+              <div class="detail-icon">&#127942;</div>
+              <div class="detail-text" style="color:rgba(255,255,255,0.6);font-style:italic;">7 Beurkundungen in einem Projekt &mdash; durch strukturierten Vertriebsprozess</div>
+            </div>
+            <div class="detail-row">
               <div class="detail-icon">&#128231;</div>
               <div class="detail-text"><a href="mailto:olli@neubau.marketing">olli@neubau.marketing</a></div>
             </div>
@@ -187,7 +208,11 @@
             </div>
             <div class="detail-row">
               <div class="detail-icon">&#128172;</div>
-              <div class="detail-text">Fragen zu Vertriebsprozess, CRM, Gespr&auml;chsf&uuml;hrung, Strategie</div>
+              <div class="detail-text">Vertriebsprozess, CRM, Gespr&auml;chsf&uuml;hrung, Strategie</div>
+            </div>
+            <div class="detail-row">
+              <div class="detail-icon">&#9889;</div>
+              <div class="detail-text" style="color:rgba(91,143,241,0.85);font-weight:700;">Wir melden uns zuerst &mdash; du musst nicht hinterherfragen.</div>
             </div>
           </div>
 
@@ -196,6 +221,14 @@
           </a>
         </div>
 
+      </div>
+
+      <!-- WHATSAPP GROUP -->
+      <div class="whatsapp-bar">
+        <div class="wa-icon">&#128242;</div>
+        <div class="wa-text">
+          <strong>Direkt nach diesem Onboarding erstellen wir eine gemeinsame WhatsApp-Gruppe</strong> &mdash; f&uuml;r kurze Wege, schnelle Antworten und keine E-Mail-Schleifen.
+        </div>
       </div>
 
       <!-- SUPPORTING TEAM -->
