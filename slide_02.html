@@ -3,28 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onboarding 02 – neubau.marketing</title>
+<title>Onboarding 02 – Der gemeinsame Prozess</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-  html,body{width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff;}
-  .slide-wrap{position:fixed;inset:0;background:#2c313c;overflow:hidden;z-index:0;}
-  .bg{position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%);pointer-events:none;}
-  .bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
-  .slide{position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1;}
-  .header{display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0;}
-  .brand{font-size:clamp(14px,1.1vw,18px);font-weight:700;letter-spacing:0.07em;color:#ffffff;}
-  .brand span{color:#5b8ff1;}
-  .slide-num{font-size:clamp(12px,0.95vw,16px);letter-spacing:0.14em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-weight:700;}
-  .center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3vh;}
-  .wip-box{border-radius:20px;border:1px dashed rgba(91,143,241,0.35);background:rgba(91,143,241,0.05);padding:5vh 6vw;display:flex;flex-direction:column;align-items:center;gap:2vh;text-align:center;}
-  .wip-icon{font-size:clamp(32px,4vw,56px);opacity:0.5;}
-  .wip-label{font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#5b8ff1;}
-  .wip-title{font-size:clamp(24px,2.8vw,44px);font-weight:900;color:rgba(255,255,255,0.85);line-height:1.1;}
-  .wip-sub{font-size:clamp(13px,1.05vw,17px);font-weight:400;color:rgba(255,255,255,0.45);}
-  .footer{padding:0 4.5vw 2.5vh;display:flex;align-items:center;justify-content:space-between;position:relative;flex-shrink:0;}
-  .footer::before{content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15);}
-  .footer-text{font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh;}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width:100vw;height:100vh;overflow:hidden;font-family:'Roboto',sans-serif;background:#2c313c!important;color:#ffffff; }
+  .slide-wrap { position:fixed;inset:0;width:100vw;height:100vh;background:#2c313c;overflow:hidden;z-index:0; }
+  .bg { position:absolute;inset:0;background:radial-gradient(ellipse 80vw 70vh at 80% -15%,rgba(91,143,241,0.12) 0%,transparent 55%),radial-gradient(ellipse 50vw 50vh at -10% 95%,rgba(91,143,241,0.08) 0%,transparent 60%),radial-gradient(ellipse 40vw 40vh at 50% 50%,rgba(91,143,241,0.04) 0%,transparent 70%);pointer-events:none; }
+  .bg::after { content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none; }
+  .slide { position:relative;width:100%;height:100%;display:flex;flex-direction:column;z-index:1; }
+  .header { display:flex;align-items:center;justify-content:space-between;padding:3vh 4.5vw 0;flex-shrink:0; }
+  .brand { font-size:clamp(14px,1.1vw,18px);font-weight:700;letter-spacing:0.07em;color:#ffffff; }
+  .brand span { color:#5b8ff1; }
+  .slide-num { font-size:clamp(12px,0.95vw,16px);letter-spacing:0.14em;color:rgba(255,255,255,0.55);text-transform:uppercase;font-weight:700; }
+  .footer { padding:0 4.5vw 2.5vh;display:flex;align-items:center;justify-content:space-between;position:relative;flex-shrink:0; }
+  .footer::before { content:'';position:absolute;top:0;left:4.5vw;right:4.5vw;height:1px;background:rgba(255,255,255,0.15); }
+  .footer-text { font-size:clamp(12px,0.95vw,16px);font-weight:500;color:rgba(255,255,255,0.75);letter-spacing:0.08em;padding-top:1.5vh; }
+
+  .slide-title { flex-shrink:0;padding:6vh 4.5vw 1.5vh; }
+  .body { flex:1;display:flex;flex-direction:column;padding:0 4.5vw 2vh;gap:1.8vh;min-height:0;justify-content:center; }
+
+  .eyebrow { display:flex;align-items:center;gap:1vw;font-size:clamp(12px,1vw,16px);font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#5b8ff1;margin-bottom:1.5vh; }
+  .eyebrow::before,.eyebrow::after { content:'';height:1px;width:2.5vw;background:rgba(91,143,241,0.5);flex-shrink:0; }
+  .headline { font-size:clamp(32px,4.5vw,72px);font-weight:900;line-height:1.05;color:#ffffff; }
+  .headline .hl { font-style:italic;background:linear-gradient(135deg,#5b8ff1 0%,#7aaaf5 50%,#3d5a9e 100%);-webkit-background-clip:text;background-clip:text;color:transparent; }
+
+  /* ── MAIN ── */
+  .main { display:flex;gap:1.5vw;flex-shrink:0; }
+
+  /* STEPS */
+  .steps-col { width:34vw;flex-shrink:0;display:flex;flex-direction:column; }
+  .step-row { display:flex;gap:1.2vw;align-items:stretch; }
+  .step-left { display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:clamp(28px,2.6vw,40px); }
+  .step-num { width:clamp(28px,2.6vw,40px);height:clamp(28px,2.6vw,40px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(10px,0.95vw,15px);font-weight:900;flex-shrink:0;background:rgba(91,143,241,0.15);border:1px solid rgba(91,143,241,0.35);color:#5b8ff1;z-index:1; }
+  .step-num.final { background:rgba(52,199,89,0.15);border-color:rgba(52,199,89,0.4);color:#34c759; }
+  .step-connector { width:1px;flex:1;background:rgba(91,143,241,0.2);margin:3px 0; }
+  .step-content { flex:1;padding-bottom:1.8vh;display:flex;flex-direction:column;gap:0.3vh; }
+  .step-row:last-child .step-content { padding-bottom:0; }
+  .step-time { display:inline-flex;padding:2px 8px;border-radius:10px;font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.08em;background:rgba(91,143,241,0.12);color:#5b8ff1;border:1px solid rgba(91,143,241,0.2);margin-bottom:0.2vh;width:fit-content; }
+  .step-time.green { background:rgba(52,199,89,0.12);color:#34c759;border-color:rgba(52,199,89,0.25); }
+  .step-title { font-size:clamp(13px,1.15vw,19px);font-weight:700;color:#ffffff;line-height:1.2; }
+  .step-title.final { color:#34c759; }
+  .step-desc { font-size:clamp(11px,0.9vw,15px);font-weight:400;color:rgba(255,255,255,0.62);line-height:1.45; }
+
+  /* TASKS */
+  .tasks-col { flex:1;min-width:0;display:flex;flex-direction:column;gap:1vh; }
+
+  .tasks-header { display:flex;gap:1.2vw;flex-shrink:0; }
+  .tasks-label { flex:1;text-align:center;font-size:clamp(10px,0.82vw,13px);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.5vh 0;border-radius:8px; }
+  .tasks-label.us { color:#5b8ff1;background:rgba(91,143,241,0.08);border:1px solid rgba(91,143,241,0.2); }
+  .tasks-label.them { color:rgba(255,255,255,0.65);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1); }
+
+  /* Kein flex:1 auf task-row — nur Content-Höhe */
+  .task-row { display:flex;gap:1.2vw;flex-shrink:0; }
+  .task-card { flex:1;border-radius:10px;padding:clamp(8px,1vh,13px) clamp(10px,1vw,15px);display:flex;flex-direction:column;gap:0.5vh; }
+  .task-card.us { background:rgba(91,143,241,0.07);border:1px solid rgba(91,143,241,0.18); }
+  .task-card.them { background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07); }
+  .task-item { display:flex;align-items:flex-start;gap:0.5vw;font-size:clamp(11px,0.9vw,15px);color:rgba(255,255,255,0.82);line-height:1.4; }
+  .task-dot { width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px; }
+  .task-card.us .task-dot { background:#5b8ff1; }
+  .task-card.them .task-dot { background:rgba(255,255,255,0.4); }
+
+  /* ── COMMITMENT BOX ── */
+  .commit-box {
+    flex-shrink:0;
+    border-radius:12px;
+    background:linear-gradient(145deg,rgba(91,143,241,0.10) 0%,rgba(91,143,241,0.03) 100%);
+    border:1px solid rgba(91,143,241,0.25);
+    padding:clamp(12px,1.3vh,18px) clamp(16px,1.6vw,24px);
+    display:flex;gap:2vw;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  .commit-box::before { content:'';position:absolute;top:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,rgba(91,143,241,0.5),transparent); }
+
+  .commit-left { flex-shrink:0;display:flex;flex-direction:column;gap:0.3vh;align-items:center;min-width:7vw; }
+  .commit-icon { font-size:clamp(22px,2.4vw,38px); }
+  .commit-badge { font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#5b8ff1;text-align:center;margin-top:0.3vh; }
+
+  .commit-divider { width:1px;align-self:stretch;background:rgba(91,143,241,0.2);flex-shrink:0; }
+
+  .commit-text-block { flex:1;display:flex;flex-direction:column;gap:0.8vh; }
+  .commit-title { font-size:clamp(13px,1.1vw,18px);font-weight:900;color:#ffffff;line-height:1.2; }
+  .commit-body { font-size:clamp(12px,0.95vw,16px);font-weight:400;color:rgba(255,255,255,0.78);line-height:1.55; }
+  .commit-body em { font-style:normal;color:#5b8ff1;font-weight:700; }
+  .commit-body strong { color:#ffffff;font-weight:700; }
+
+  .commit-right { flex-shrink:0;display:flex;flex-direction:column;gap:0.6vh;min-width:14vw; }
+  .commit-stat { display:flex;flex-direction:column;align-items:center;padding:clamp(8px,1vh,13px);border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08); }
+  .commit-stat-val { font-size:clamp(14px,1.4vw,22px);font-weight:900;background:linear-gradient(135deg,#5b8ff1,#7aaaf5);-webkit-background-clip:text;background-clip:text;color:transparent; }
+  .commit-stat-lbl { font-size:clamp(9px,0.75vw,12px);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-align:center;margin-top:0.2vh; }
 </style>
 </head>
 <body>
@@ -35,13 +102,115 @@
       <div class="brand">neubau<span>.</span>marketing</div>
       <div class="slide-num">02 / 07</div>
     </div>
-    <div class="center">
-      <div class="wip-box">
-        <div class="wip-icon">&#9881;</div>
-        <div class="wip-label">Work in Progress</div>
-        <div class="wip-title">Der gemeinsame Prozess</div>
-        <div class="wip-sub">Wird gerade ausgearbeitet &mdash; in K&uuml;rze verf&uuml;gbar.</div>
+    <div class="slide-title">
+      <div class="eyebrow">Der gemeinsame Prozess</div>
+      <div class="headline">Vom Briefing zum <span class="hl">Go-Live.</span></div>
+    </div>
+
+    <div class="body">
+
+      <div class="main">
+        <!-- STEPS -->
+        <div class="steps-col">
+          <div class="step-row">
+            <div class="step-left"><div class="step-num">1</div><div class="step-connector"></div></div>
+            <div class="step-content">
+              <div class="step-time">Tag 1&ndash;2</div>
+              <div class="step-title">Projektonboarding</div>
+              <div class="step-desc">Briefing, Projektziele, Zielgruppenanalyse.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-left"><div class="step-num">2</div><div class="step-connector"></div></div>
+            <div class="step-content">
+              <div class="step-time">Tag 3&ndash;9</div>
+              <div class="step-title">Setup &amp; Fulfillment</div>
+              <div class="step-desc">Landingpage, Creatives, Expos&eacute;, technisches Setup &mdash; alles parallel.</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-left"><div class="step-num">3</div><div class="step-connector"></div></div>
+            <div class="step-content">
+              <div class="step-time">Tag 10</div>
+              <div class="step-title">Vertriebliches Onboarding</div>
+              <div class="step-desc">Vertriebsprozess, CRM, Gespr&auml;chsf&uuml;hrung (~1,5 Std.).</div>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-left"><div class="step-num final">4</div></div>
+            <div class="step-content">
+              <div class="step-time green">&Oslash; &lt; 2 Wochen</div>
+              <div class="step-title final">Go-Live &mdash; Erste Anfragen in Woche 1</div>
+              <div class="step-desc">Kampagne aktiv. Pipeline l&auml;uft. Ergebnisse messbar ab Tag 1.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TASKS -->
+        <div class="tasks-col">
+          <div class="tasks-header">
+            <div class="tasks-label us">&#8594;&nbsp; neubau.marketing</div>
+            <div class="tasks-label them">&#8594;&nbsp; Deine Aufgabe</div>
+          </div>
+          <div class="task-row">
+            <div class="task-card us">
+              <div class="task-item"><div class="task-dot"></div>Kick-off moderieren, Strategie definieren</div>
+              <div class="task-item"><div class="task-dot"></div>Zielgruppen &amp; Kampagnenausrichtung festlegen</div>
+            </div>
+            <div class="task-card them">
+              <div class="task-item"><div class="task-dot"></div>Projektunterlagen bereitstellen</div>
+              <div class="task-item"><div class="task-dot"></div>Ansprechpartner f&uuml;r R&uuml;ckfragen benennen</div>
+            </div>
+          </div>
+          <div class="task-row">
+            <div class="task-card us">
+              <div class="task-item"><div class="task-dot"></div>Landingpage, Creatives &amp; Expos&eacute; erstellen</div>
+              <div class="task-item"><div class="task-dot"></div>Meta Ad-Manager, Tracking &amp; CRM einrichten</div>
+            </div>
+            <div class="task-card them">
+              <div class="task-item"><div class="task-dot"></div>Bildmaterial &amp; Grundrisse freigeben</div>
+              <div class="task-item"><div class="task-dot"></div>Zugang zum Facebook-Werbekonto gew&auml;hren</div>
+            </div>
+          </div>
+          <div class="task-row">
+            <div class="task-card us">
+              <div class="task-item"><div class="task-dot"></div>Vertriebsprozess analysieren &amp; Empfehlungen geben</div>
+              <div class="task-item"><div class="task-dot"></div>CRM einf&uuml;hren, Gespr&auml;chsf&uuml;hrung coachen</div>
+            </div>
+            <div class="task-card them">
+              <div class="task-item"><div class="task-dot"></div>Vertriebsteam verf&uuml;gbar machen</div>
+              <div class="task-item"><div class="task-dot"></div>CRM-Zugangsdaten best&auml;tigen</div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- COMMITMENT BOX -->
+      <div class="commit-box" style="margin-top:2.5vh;">
+        <div class="commit-left">
+          <div class="commit-icon">&#9889;</div>
+          <div class="commit-badge">Dein Commitment</div>
+        </div>
+        <div class="commit-divider"></div>
+        <div class="commit-text-block">
+          <div class="commit-title">Dein Einsatz entscheidet &uuml;ber deinen Erfolg.</div>
+          <div class="commit-body">
+            Wir liefern System, Strategie und Begleitung. <em>Reaktionsgeschwindigkeit, Gespr&auml;chsf&uuml;hrung und Commitment</em> bringst du mit &mdash; denn kein System ersetzt einen Vertrieb der dahinter ist. Der Markt ist herausfordernder als je zuvor: Zinsen d&auml;mpfen die Kaufbereitschaft, Interessenten entscheiden langsamer, Wettbewerb w&auml;chst. <strong>Wer jetzt ein funktionierendes System betreibt, gewinnt die K&auml;ufer die andere liegen lassen.</strong>
+          </div>
+        </div>
+        <div class="commit-divider"></div>
+        <div class="commit-right">
+          <div class="commit-stat">
+            <div class="commit-stat-val">&lt; 1 Std.</div>
+            <div class="commit-stat-lbl">Empfohlene Reaktionszeit auf Anfragen</div>
+          </div>
+          <div class="commit-stat">
+            <div class="commit-stat-val">4,7&times;</div>
+            <div class="commit-stat-lbl">H&ouml;here Konversion mit System vs. ohne System</div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="footer">
       <div class="footer-text">Neobau Digital GmbH &middot; neubau.marketing</div>
